@@ -48,7 +48,7 @@ If you find a bug:
 
 ```bash
 # Clone your fork
-git clone https://github.com/YOUR_USERNAME/invitra.git
+git clone https://github.com/senrecep/invitra.git
 cd invitra
 
 # Install dependencies
