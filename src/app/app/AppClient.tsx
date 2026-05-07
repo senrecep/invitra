@@ -15,14 +15,6 @@ function LockIcon() {
   );
 }
 
-function EnvelopeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth={1.5}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-    </svg>
-  );
-}
-
 function AppHeader({ session }: { session: Session }) {
   const t = useTranslations("auth");
   const ts = useTranslations("settings");
@@ -38,19 +30,17 @@ function AppHeader({ session }: { session: Session }) {
   }
 
   return (
-    <header className="sticky top-0 z-30 bg-white border-b border-violet-100 shadow-[0_1px_4px_rgba(124,58,237,0.06)]">
+    <header className="sticky top-0 z-30 bg-white border-b border-stone-200 shadow-[0_1px_4px_rgba(0,0,0,0.06)]">
       <div className="flex items-center justify-between px-4 py-3">
         <div className="flex items-center gap-2">
-          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-purple-600 text-white">
-            <EnvelopeIcon />
-          </div>
-          <span className="text-base font-bold text-violet-950">Invitra</span>
+          <img src="/icon.png" alt="Invitra" className="w-8 h-8 rounded-lg" />
+          <span className="text-base font-bold text-slate-900">Invitra</span>
         </div>
         <div className="flex items-center gap-3">
           <span className="text-sm text-slate-500 truncate max-w-[130px]">{displayName}</span>
           <button
             onClick={handleLogout}
-            className="text-sm text-violet-600 font-medium hover:text-violet-800 transition-colors min-h-[44px] px-2 cursor-pointer"
+            className="text-sm text-slate-600 font-medium hover:text-slate-800 transition-colors min-h-[44px] px-2 cursor-pointer"
           >
             {t("logout")}
           </button>

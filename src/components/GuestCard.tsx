@@ -56,9 +56,9 @@ const TRANSPORT_META: Record<TransportationType, { icon: React.ReactNode; label:
 };
 
 const GROUP_COLORS = [
-  "bg-violet-100 text-violet-700",
-  "bg-purple-100 text-purple-700",
-  "bg-fuchsia-100 text-fuchsia-700",
+  "bg-rose-100 text-rose-700",
+  "bg-orange-100 text-orange-700",
+  "bg-stone-200 text-stone-700",
   "bg-pink-100 text-pink-700",
   "bg-amber-100 text-amber-700",
   "bg-emerald-100 text-emerald-700",
@@ -102,7 +102,7 @@ export default function GuestCard({ guest, onEdit }: GuestCardProps) {
 
   return (
     <>
-      <div className="bg-white rounded-2xl shadow-[0_1px_4px_rgba(124,58,237,0.07)] border border-violet-100 px-4 py-3 space-y-2">
+      <div className="bg-white rounded-2xl shadow-[0_1px_4px_rgba(0,0,0,0.06)] border border-stone-200 px-4 py-3 space-y-2">
         {/* Top row */}
         <div className="flex items-start justify-between gap-2">
           <p className="text-base font-semibold text-slate-900 leading-tight">{guest.fullName}</p>
@@ -140,7 +140,7 @@ export default function GuestCard({ guest, onEdit }: GuestCardProps) {
             <div className="ml-auto flex gap-2">
               <button
                 onClick={onEdit}
-                className="text-xs text-violet-600 hover:text-violet-800 font-medium min-h-[36px] px-2 cursor-pointer"
+                className="text-xs text-slate-600 hover:text-slate-800 font-medium min-h-[36px] px-2 cursor-pointer"
               >
                 {tc("edit")}
               </button>
@@ -158,14 +158,14 @@ export default function GuestCard({ guest, onEdit }: GuestCardProps) {
         {(() => {
           const isEdited = new Date(guest.updatedAt).getTime() - new Date(guest.createdAt).getTime() > 60000;
           return (
-            <div className="flex items-center gap-1.5 pt-1.5 border-t border-violet-50 text-slate-400">
+            <div className="flex items-center gap-1.5 pt-1.5 border-t border-stone-100 text-slate-400">
               <ClockIcon />
               <span className="text-xs">{formatRelativeDate(guest.createdAt, settings?.locale, settings?.timezone)}</span>
               {isEdited && (
                 <>
                   <span className="text-xs text-slate-300 mx-0.5">·</span>
                   <PencilIcon />
-                  <span className="text-xs text-violet-400">{formatRelativeDate(guest.updatedAt, settings?.locale, settings?.timezone)}</span>
+                  <span className="text-xs text-slate-400">{formatRelativeDate(guest.updatedAt, settings?.locale, settings?.timezone)}</span>
                 </>
               )}
             </div>
@@ -176,7 +176,7 @@ export default function GuestCard({ guest, onEdit }: GuestCardProps) {
       {/* Delete confirm modal */}
       {showDeleteConfirm && (
         <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 backdrop-blur-sm px-4 pb-6">
-          <div className="w-full max-w-sm bg-white rounded-2xl shadow-xl border border-violet-100 p-5 space-y-4">
+          <div className="w-full max-w-sm bg-white rounded-2xl shadow-xl border border-stone-200 p-5 space-y-4">
             <p className="text-sm text-slate-700 text-center">{t("deleteConfirm")}</p>
             <p className="text-center font-semibold text-slate-900">{guest.fullName}</p>
             <div className="flex gap-3">

@@ -59,7 +59,7 @@ function CollapsibleSection({
       >
         <div className="flex items-center gap-2">
           <span className="font-semibold text-sm text-slate-800">{label}</span>
-          <span className="bg-violet-100 text-violet-700 text-xs rounded-full px-2 py-0.5 font-medium">
+          <span className="bg-stone-100 text-stone-600 text-xs rounded-full px-2 py-0.5 font-medium">
             {count}
           </span>
         </div>
@@ -161,7 +161,7 @@ export default function GuestList() {
       {/* Header row */}
       <div className="flex items-center justify-between">
         <p className="text-sm font-semibold text-slate-700">
-          {t("title")} <span className="text-violet-500 font-normal">({guests.length})</span>
+          {t("title")} <span className="text-slate-400 font-normal">({guests.length})</span>
         </p>
         <button
           onClick={() => setShowAddModal(true)}
@@ -173,7 +173,7 @@ export default function GuestList() {
       </div>
 
       {/* View mode tabs */}
-      <div className="bg-violet-50 rounded-xl p-1 flex gap-1 overflow-x-auto scrollbar-none">
+      <div className="bg-stone-100 rounded-xl p-1 flex gap-1 overflow-x-auto scrollbar-none">
         {viewModes.map(({ key, label }) => (
           <button
             key={key}
@@ -181,8 +181,8 @@ export default function GuestList() {
             onClick={() => setViewMode(key)}
             className={`shrink-0 sm:flex-1 text-xs font-medium px-3 py-1.5 sm:py-2 rounded-lg transition-all cursor-pointer whitespace-nowrap text-center ${
               viewMode === key
-                ? "bg-white text-violet-700 font-semibold shadow-sm shadow-violet-200"
-                : "text-slate-500 hover:text-violet-600 hover:bg-white/50"
+                ? "bg-white text-slate-800 font-semibold shadow-sm shadow-stone-200"
+                : "text-slate-500 hover:text-slate-700 hover:bg-white/50"
             }`}
           >
             {label}
@@ -196,13 +196,13 @@ export default function GuestList() {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder={tc("search")}
-        className="w-full px-3 py-2.5 rounded-xl border border-violet-200 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white placeholder:text-slate-400"
+        className="w-full px-3 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400 bg-white placeholder:text-slate-400"
       />
 
       {/* List */}
       {isLoading ? (
         <div className="flex justify-center py-10">
-          <div className="w-6 h-6 border-2 border-violet-600 border-t-transparent rounded-full animate-spin" />
+          <div className="w-6 h-6 border-2 border-slate-600 border-t-transparent rounded-full animate-spin" />
         </div>
       ) : filtered.length === 0 ? (
         <div className="text-center py-10 text-slate-400 text-sm">{tc("noData")}</div>

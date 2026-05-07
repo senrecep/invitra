@@ -106,19 +106,19 @@ export default function AddGuestModal({ guest, onClose }: Props) {
     }
   }
 
-  const inputCls = "w-full px-3 py-2.5 rounded-xl border border-violet-200 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white";
+  const inputCls = "w-full px-3 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400 bg-white";
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 backdrop-blur-sm">
       <div className="w-full max-w-2xl bg-white rounded-t-3xl shadow-2xl max-h-[92vh] overflow-y-auto">
         {/* Handle bar */}
         <div className="flex justify-center pt-3 pb-1">
-          <div className="w-10 h-1 bg-violet-200 rounded-full" />
+          <div className="w-10 h-1 bg-stone-200 rounded-full" />
         </div>
 
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-3 border-b border-violet-100">
-          <h2 className="text-base font-semibold text-violet-950">
+        <div className="flex items-center justify-between px-5 py-3 border-b border-stone-200">
+          <h2 className="text-base font-semibold text-slate-900">
             {isEdit ? tc("edit") : t("addGuest")}
           </h2>
           <button
@@ -193,11 +193,11 @@ export default function AddGuestModal({ guest, onClose }: Props) {
                   onClick={() => setTransportation(type)}
                   className={`flex flex-col items-center py-3 px-2 rounded-xl border-2 text-xs font-medium transition-all min-h-[72px] cursor-pointer ${
                     transportation === type
-                      ? "border-violet-600 bg-violet-50 text-violet-700"
-                      : "border-violet-100 bg-white text-slate-600 hover:border-violet-300"
+                      ? "border-rose-500 bg-rose-50 text-rose-700"
+                      : "border-stone-200 bg-white text-slate-600 hover:border-rose-300"
                   }`}
                 >
-                  <span className={`mb-1.5 ${transportation === type ? "text-violet-600" : "text-slate-400"}`}>{icon}</span>
+                  <span className={`mb-1.5 ${transportation === type ? "text-rose-600" : "text-slate-400"}`}>{icon}</span>
                   <span className="text-center leading-tight">{label}</span>
                 </button>
               ))}

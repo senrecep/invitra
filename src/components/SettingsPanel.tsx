@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useApp } from "@/contexts/AppContext";
 import { useTranslations } from "next-intl";
 
@@ -70,6 +70,17 @@ export default function SettingsPanel() {
   const [copiedOrgId, setCopiedOrgId] = useState<string | null>(null);
 
   const [deleteConfirm, setDeleteConfirm] = useState<{ type: "group" | "organizer"; id: string } | null>(null);
+
+  useEffect(() => {
+    if (!settings) return;
+    setEventName(settings.eventName ?? "");
+    setEventDescription(settings.eventDescription ?? "");
+    setEventDate(settings.eventDate ?? "");
+    setEventTime(settings.eventTime ?? "");
+    setLocale(settings.locale ?? "tr-TR");
+    setTimezone(settings.timezone ?? "Europe/Istanbul");
+    setCapacity(settings.capacity ?? 150);
+  }, [settings]);
 
   async function saveEventInfo() {
     setSavingEvent(true);
@@ -182,22 +193,22 @@ export default function SettingsPanel() {
     setTimeout(() => setCopiedOrgId(null), 2000);
   }
 
-  const inputCls = "w-full px-3 py-2 rounded-xl border border-violet-200 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white";
-  const smallInputCls = "w-full px-2 py-1.5 rounded-lg border border-violet-200 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white";
+  const inputCls = "w-full px-3 py-2 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400 bg-white";
+  const smallInputCls = "w-full px-2 py-1.5 rounded-lg border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400 bg-white";
 
   return (
-    <div className="bg-white rounded-2xl shadow-[0_1px_6px_rgba(124,58,237,0.08)] border border-violet-100 overflow-hidden">
+    <div className="bg-white rounded-2xl shadow-[0_1px_6px_rgba(0,0,0,0.06)] border border-stone-200 overflow-hidden">
       {/* Header */}
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-4 py-3 bg-gradient-to-r from-violet-700 to-purple-600 text-white min-h-[52px] cursor-pointer"
+        className="w-full flex items-center justify-between px-4 py-3 bg-gradient-to-r from-slate-800 to-slate-700 text-white min-h-[52px] cursor-pointer"
       >
         <span className="font-semibold text-sm">{t("title")}</span>
         {open ? <ChevronUpIcon /> : <ChevronDownIcon />}
       </button>
 
       {open && (
-        <div className="divide-y divide-violet-50">
+        <div className="divide-y divide-stone-100">
           {/* Event Info */}
           <div className="px-4 py-4 space-y-3">
             <p className="text-sm font-semibold text-slate-700">{t("eventInfo")}</p>
@@ -254,7 +265,7 @@ export default function SettingsPanel() {
             <button
               onClick={saveEventInfo}
               disabled={savingEvent}
-              className="w-full py-2 bg-violet-600 text-white rounded-xl text-sm font-medium hover:bg-violet-700 active:scale-95 transition-all disabled:opacity-60 min-h-[44px] cursor-pointer"
+              className="w-full py-2 bg-slate-800 text-white rounded-xl text-sm font-medium hover:bg-slate-700 active:scale-95 transition-all disabled:opacity-60 min-h-[44px] cursor-pointer"
             >
               {savingEvent ? "..." : tc("save")}
             </button>
@@ -275,7 +286,7 @@ export default function SettingsPanel() {
               <button
                 onClick={saveCapacity}
                 disabled={savingCapacity}
-                className="px-4 py-2 bg-violet-600 text-white rounded-xl text-sm font-medium hover:bg-violet-700 active:scale-95 transition-all disabled:opacity-60 min-h-[44px] cursor-pointer"
+                className="px-4 py-2 bg-slate-800 text-white rounded-xl text-sm font-medium hover:bg-slate-700 active:scale-95 transition-all disabled:opacity-60 min-h-[44px] cursor-pointer"
               >
                 {savingCapacity ? "..." : tc("save")}
               </button>
@@ -310,13 +321,13 @@ export default function SettingsPanel() {
             <p className="text-sm font-semibold text-slate-700">{t("groups")}</p>
             <div className="space-y-2">
               {groups.map((group) => (
-                <div key={group.id} className="flex items-center gap-2 bg-violet-50/50 rounded-xl px-3 py-2">
+                <div key={group.id} className="flex items-center gap-2 bg-stone-50 rounded-xl px-3 py-2">
                   {editingGroupId === group.id ? (
                     <div className="flex-1 space-y-1">
                       <input value={editGroupName} onChange={(e) => setEditGroupName(e.target.value)} className={smallInputCls} placeholder={t("groupName")} />
                       <input value={editGroupNameEn} onChange={(e) => setEditGroupNameEn(e.target.value)} className={smallInputCls} placeholder={t("groupNameEn")} />
                       <div className="flex gap-2 pt-1">
-                        <button onClick={() => saveGroup(group.id)} className="flex-1 py-1.5 bg-violet-600 text-white rounded-lg text-xs font-medium hover:bg-violet-700 min-h-[36px] cursor-pointer">{tc("save")}</button>
+                        <button onClick={() => saveGroup(group.id)} className="flex-1 py-1.5 bg-slate-800 text-white rounded-lg text-xs font-medium hover:bg-slate-700 min-h-[36px] cursor-pointer">{tc("save")}</button>
                         <button onClick={() => setEditingGroupId(null)} className="flex-1 py-1.5 bg-slate-200 text-slate-700 rounded-lg text-xs font-medium hover:bg-slate-300 min-h-[36px] cursor-pointer">{tc("cancel")}</button>
                       </div>
                     </div>
@@ -328,7 +339,7 @@ export default function SettingsPanel() {
                       </div>
                       <button
                         onClick={() => copyGroupLink(group.id)}
-                        className="flex items-center justify-center text-violet-500 hover:text-violet-700 min-h-[36px] w-8 cursor-pointer"
+                        className="flex items-center justify-center text-slate-500 hover:text-slate-700 min-h-[36px] w-8 cursor-pointer"
                         title={t("linkCopied")}
                       >
                         {copiedGroupId === group.id ? <CheckIcon /> : <LinkIcon />}
@@ -348,7 +359,7 @@ export default function SettingsPanel() {
             <div className="space-y-1">
               <input value={newGroupName} onChange={(e) => setNewGroupName(e.target.value)} placeholder={t("groupName")} className={inputCls} />
               <input value={newGroupNameEn} onChange={(e) => setNewGroupNameEn(e.target.value)} placeholder={t("groupNameEn")} className={inputCls} />
-              <button onClick={addGroup} disabled={addingGroup || !newGroupName.trim()} className="w-full py-2 bg-violet-600 text-white rounded-xl text-sm font-medium hover:bg-violet-700 active:scale-95 transition-all disabled:opacity-60 min-h-[44px] cursor-pointer">
+              <button onClick={addGroup} disabled={addingGroup || !newGroupName.trim()} className="w-full py-2 bg-slate-800 text-white rounded-xl text-sm font-medium hover:bg-slate-700 active:scale-95 transition-all disabled:opacity-60 min-h-[44px] cursor-pointer">
                 {addingGroup ? "..." : t("addGroup")}
               </button>
             </div>
@@ -359,12 +370,12 @@ export default function SettingsPanel() {
             <p className="text-sm font-semibold text-slate-700">{t("organizers")}</p>
             <div className="space-y-2">
               {organizers.map((org) => (
-                <div key={org.id} className="flex items-center gap-2 bg-violet-50/50 rounded-xl px-3 py-2">
+                <div key={org.id} className="flex items-center gap-2 bg-stone-50 rounded-xl px-3 py-2">
                   {editingOrgId === org.id ? (
                     <div className="flex-1 space-y-1">
                       <input value={editOrgName} onChange={(e) => setEditOrgName(e.target.value)} className={smallInputCls} placeholder={t("organizerName")} />
                       <div className="flex gap-2 pt-1">
-                        <button onClick={() => saveOrganizer(org.id)} className="flex-1 py-1.5 bg-violet-600 text-white rounded-lg text-xs font-medium hover:bg-violet-700 min-h-[36px] cursor-pointer">{tc("save")}</button>
+                        <button onClick={() => saveOrganizer(org.id)} className="flex-1 py-1.5 bg-slate-800 text-white rounded-lg text-xs font-medium hover:bg-slate-700 min-h-[36px] cursor-pointer">{tc("save")}</button>
                         <button onClick={() => setEditingOrgId(null)} className="flex-1 py-1.5 bg-slate-200 text-slate-700 rounded-lg text-xs font-medium hover:bg-slate-300 min-h-[36px] cursor-pointer">{tc("cancel")}</button>
                       </div>
                     </div>
@@ -376,7 +387,7 @@ export default function SettingsPanel() {
                       </div>
                       <button
                         onClick={() => copyOrgLink(org)}
-                        className="flex items-center gap-1 text-xs text-violet-600 hover:text-violet-800 min-h-[36px] px-1 cursor-pointer"
+                        className="flex items-center gap-1 text-xs text-slate-600 hover:text-slate-800 min-h-[36px] px-1 cursor-pointer"
                       >
                         {copiedOrgId === org.id ? <CheckIcon /> : <LinkIcon />}
                         <span className="hidden sm:inline">{copiedOrgId === org.id ? t("linkCopied") : t("copyLink")}</span>
@@ -395,7 +406,7 @@ export default function SettingsPanel() {
 
             <div className="space-y-1">
               <input value={newOrgName} onChange={(e) => setNewOrgName(e.target.value)} placeholder={t("organizerName")} className={inputCls} />
-              <button onClick={addOrganizer} disabled={addingOrg || !newOrgName.trim()} className="w-full py-2 bg-violet-600 text-white rounded-xl text-sm font-medium hover:bg-violet-700 active:scale-95 transition-all disabled:opacity-60 min-h-[44px] cursor-pointer">
+              <button onClick={addOrganizer} disabled={addingOrg || !newOrgName.trim()} className="w-full py-2 bg-slate-800 text-white rounded-xl text-sm font-medium hover:bg-slate-700 active:scale-95 transition-all disabled:opacity-60 min-h-[44px] cursor-pointer">
                 {addingOrg ? "..." : t("addOrganizer")}
               </button>
             </div>
@@ -406,7 +417,7 @@ export default function SettingsPanel() {
       {/* Delete confirm modal */}
       {deleteConfirm && (
         <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 backdrop-blur-sm px-4 pb-6">
-          <div className="w-full max-w-sm bg-white rounded-2xl shadow-xl border border-violet-100 p-5 space-y-4">
+          <div className="w-full max-w-sm bg-white rounded-2xl shadow-xl border border-stone-200 p-5 space-y-4">
             <p className="text-sm text-slate-700 text-center">{t("deleteConfirm")}</p>
             <div className="flex gap-3">
               <button

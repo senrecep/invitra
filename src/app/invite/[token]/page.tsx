@@ -4,14 +4,6 @@ import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 
-function EnvelopeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-white" stroke="currentColor" strokeWidth={1.5}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-    </svg>
-  );
-}
-
 function WarningIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12 text-amber-400 mx-auto mb-3" stroke="currentColor" strokeWidth={1.5}>
@@ -54,7 +46,7 @@ export default function InvitePage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-2 border-violet-600 border-t-transparent" />
+        <div className="animate-spin rounded-full h-8 w-8 border-2 border-slate-600 border-t-transparent" />
       </div>
     );
   }
@@ -71,22 +63,20 @@ export default function InvitePage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-violet-50 via-purple-50 to-fuchsia-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-stone-50 via-rose-50/30 to-stone-100 px-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-600 to-purple-600 mb-4 shadow-lg shadow-violet-200">
-            <EnvelopeIcon />
-          </div>
-          <h1 className="text-2xl font-bold text-violet-950">Invitra</h1>
+          <img src="/icon.png" alt="Invitra" className="w-16 h-16 rounded-2xl mb-4 shadow-lg shadow-slate-200" />
+          <h1 className="text-2xl font-bold text-slate-900">Invitra</h1>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 text-center">
+        <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6 text-center">
           <p className="text-slate-500 text-sm mb-2">{t("welcomeAs")}</p>
-          <p className="text-xl font-bold text-violet-950 mb-6">{organizer?.name}</p>
+          <p className="text-xl font-bold text-slate-900 mb-6">{organizer?.name}</p>
           <button
             onClick={handleJoin}
             disabled={joining}
-            className="w-full bg-violet-600 text-white py-3 px-4 rounded-xl font-medium hover:bg-violet-700 active:scale-95 transition-all disabled:opacity-60 cursor-pointer"
+            className="w-full bg-slate-800 text-white py-3 px-4 rounded-xl font-medium hover:bg-slate-700 active:scale-95 transition-all disabled:opacity-60 cursor-pointer"
           >
             {joining ? "..." : t("continue")}
           </button>

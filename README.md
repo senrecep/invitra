@@ -1,5 +1,7 @@
 # Invitra — Event Guest Management System
 
+![Invitra](public/banner.png)
+
 A real-time, multi-user guest management system for weddings and events. Built mobile-first for 10–20 concurrent users. Self-hosted via Docker Compose with Traefik/Dokploy support.
 
 ---
