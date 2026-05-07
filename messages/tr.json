@@ -15,6 +15,7 @@
   },
   "auth": {
     "title": "Giriş Yap",
+    "subtitle": "Davet Yönetim Sistemi",
     "password": "Şifre",
     "login": "Giriş",
     "logout": "Çıkış",
@@ -86,11 +87,19 @@
     "guestDeleted": "Davetli silindi",
     "cannotEdit": "Düzenleme şu an kapalıdır",
     "noPermission": "Bu kaydı düzenleme yetkiniz yok",
-    "totalWithGuests": "kişiyle geliyor"
+    "totalWithGuests": "kişiyle geliyor",
+    "viewAll": "Tümü",
+    "viewByGroup": "Gruba Göre",
+    "viewByOrganizer": "Organizatöre Göre",
+    "viewByDate": "Tarihe Göre",
+    "ungrouped": "Grupsuz",
+    "noOrganizerLabel": "Organizatörsüz"
   },
   "invite": {
     "welcome": "Hoş geldiniz",
     "welcomeAs": "olarak giriş yapıyorsunuz",
-    "continue": "Devam Et"
+    "continue": "Devam Et",
+    "invalidLink": "Geçersiz link",
+    "loginFailed": "Giriş yapılamadı"
   }
 }

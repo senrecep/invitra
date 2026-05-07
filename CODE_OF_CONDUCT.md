@@ -1,56 +1,41 @@
-# Katilimci Davranis Kurallari
+# Contributor Code of Conduct
 
-## Sozlesmemiz
+## Our Pledge
 
-Biz, katilimcilar, katkilar saglayicilar ve liderler olarak, toplulugumuzda yas, beden
-buyuklugundan bagimsiz olarak, engel durumu, etnik koken, cinsiyet ozellikleri, cinsiyet
-kimligi ve ifadesi, deneyim duzeyi, egitim, sosyoekonomik durum, uyruk, kisisel gorunum,
-irk, din veya cinsel kimlik ve yonelime bakilmaksizin herkese yonelik taciz icermeyen
-bir deneyimi saglamayi taahhut ediyoruz.
+We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
-Acik, hosgorulu, cesitlilige deger veren, katilimci ve saglikli bir topluluga katki saglar
-sekilde davranmayi taahhut ediyoruz.
+We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
 
-## Standartlarimiz
+## Our Standards
 
-Olumlu bir topluluk ortamina katki saglayan davranis ornekleri:
+Examples of behavior that contributes to a positive community environment:
 
-- Baskalariniza karsi empati ve iyilik gostermek
-- Farkli goruslere, bakis acilarindan ve deneyimlere saygi gostermek
-- Yapici geri bildirim vermek ve nazikce kabul etmek
-- Hatalarimizin etkisinden etkilenenlere karsi sorumlulugu kabul etmek ve ozur dilemek,
-  ve deneyimden ogrenip hatirlamak
-- Sadece bireyler olarak bizim icin degil, genel topluluk icin en iyisinin ne olduguna
-  odaklanmak
+- Demonstrating empathy and kindness toward other people
+- Being respectful of differing opinions, viewpoints, and experiences
+- Giving and gracefully accepting constructive feedback
+- Accepting responsibility and apologizing to those affected by our mistakes, and learning from the experience
+- Focusing on what is best not just for us as individuals, but for the overall community
 
-Kabul edilemez davranis ornekleri:
+Examples of unacceptable behavior:
 
-- Cinsellestirilmis dil veya imgelerin kullanimi ve cinsel ilgi veya herhangi bir sekilde
-  cinsel yaklasimlarda bulunmak
-- Trolleme, hakaret / asagilayici yorumlar ve kisisel ya da siyasi saldirilarda bulunmak
-- Kamuya acik veya ozel taciz
-- Fiziksel veya e-posta adresi gibi baskalarinin ozel bilgilerini, acik bir izin
-  alinmaksizin yayinlamak
-- Profesyonel bir ortamda makul sayilmayabilecek diger davranislar
+- The use of sexualized language or imagery, and sexual attention or advances of any kind
+- Trolling, insulting or derogatory comments, and personal or political attacks
+- Public or private harassment
+- Publishing others' private information, such as a physical or email address, without their explicit permission
+- Other conduct which could reasonably be considered inappropriate in a professional setting
 
-## Uygulama Sorumluluklar
+## Enforcement Responsibilities
 
-Topluluk liderleri, kabul edilebilir davranis standartlarimizi aciklamaktan ve uygun ve
-adil duzeltici onlemleri uygulayarak, kabul edilemez oldugunu dusudukleri herhangi bir
-davranisa karsi koymaktan sorumludur.
+Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, offensive, or harmful.
 
-## Kapsam
+## Scope
 
-Bu Davranis Kurallari, tum topluluk alanlari icin gecerlidir ve ayni zamanda bir kisi
-toplulugumuzu kamuya acik alanlarda resmi olarak temsil ettiginde de gecerlidir.
+This Code of Conduct applies within all community spaces, and also applies when an individual is officially representing the community in public spaces.
 
-## Uygulama
+## Enforcement
 
-Taciz edici, rahatsiz edici veya baska turlu kabul edilemez davranis ornekleri,
-proje sahipleriyle iletisime gecilerek bildirilebilir. Tum sikayetler derhal ve adil
-bir sekilde incelenecek ve sorusturulacaktir.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the project owners. All complaints will be reviewed and investigated promptly and fairly.
 
-## Atif
+## Attribution
 
-Bu Davranis Kurallari, surumu 2.1'de mevcut olan
-[Katilimci Sozlesmesi](https://www.contributor-covenant.org)'nden uyarlanmistir.
+This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org), version 2.1.

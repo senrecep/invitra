@@ -37,10 +37,10 @@ function VanIcon() {
   );
 }
 
-const TRANSPORT_OPTIONS: { type: TransportationType; icon: React.ReactNode; label: string }[] = [
-  { type: "OWN_CAR", icon: <CarIcon />, label: "Kendi Aracı" },
-  { type: "PUBLIC_TRANSPORT", icon: <BusIcon />, label: "Toplu Ulaşım" },
-  { type: "REQUESTING_VEHICLE", icon: <VanIcon />, label: "Araç Talep" },
+const TRANSPORT_OPTIONS: { type: TransportationType; icon: React.ReactNode; labelKey: string }[] = [
+  { type: "OWN_CAR", icon: <CarIcon />, labelKey: "ownCar" },
+  { type: "PUBLIC_TRANSPORT", icon: <BusIcon />, labelKey: "publicTransport" },
+  { type: "REQUESTING_VEHICLE", icon: <VanIcon />, labelKey: "requestingVehicle" },
 ];
 
 interface Props {
@@ -186,7 +186,7 @@ export default function AddGuestModal({ guest, onClose }: Props) {
           <div className="space-y-2">
             <label className="block text-sm font-medium text-slate-700">{t("transportation")}</label>
             <div className="grid grid-cols-3 gap-2">
-              {TRANSPORT_OPTIONS.map(({ type, icon, label }) => (
+              {TRANSPORT_OPTIONS.map(({ type, icon, labelKey }) => (
                 <button
                   key={type}
                   type="button"
@@ -198,7 +198,7 @@ export default function AddGuestModal({ guest, onClose }: Props) {
                   }`}
                 >
                   <span className={`mb-1.5 ${transportation === type ? "text-rose-600" : "text-slate-400"}`}>{icon}</span>
-                  <span className="text-center leading-tight">{label}</span>
+                  <span className="text-center leading-tight">{t(labelKey as any)}</span>
                 </button>
               ))}
             </div>

@@ -15,6 +15,7 @@
   },
   "auth": {
     "title": "Sign In",
+    "subtitle": "Event Guest Management",
     "password": "Password",
     "login": "Login",
     "logout": "Logout",
@@ -76,9 +77,9 @@
     "organizer": "Invited By",
     "noOrganizer": "— General —",
     "transportation": "Transportation",
-    "ownCar": "Own Car",
+    "ownCar": "Own Vehicle",
     "publicTransport": "Public Transport",
-    "requestingVehicle": "Requesting Vehicle",
+    "requestingVehicle": "Vehicle Request",
     "editGuest": "Edit",
     "deleteGuest": "Delete",
     "guestAdded": "Guest added",
@@ -86,11 +87,19 @@
     "guestDeleted": "Guest deleted",
     "cannotEdit": "Editing is currently disabled",
     "noPermission": "You don't have permission to edit this entry",
-    "totalWithGuests": "coming with guests"
+    "totalWithGuests": "coming with guests",
+    "viewAll": "All",
+    "viewByGroup": "By Group",
+    "viewByOrganizer": "By Organizer",
+    "viewByDate": "By Date",
+    "ungrouped": "Ungrouped",
+    "noOrganizerLabel": "No Organizer"
   },
   "invite": {
     "welcome": "Welcome",
     "welcomeAs": "You are signing in as",
-    "continue": "Continue"
+    "continue": "Continue",
+    "invalidLink": "Invalid link",
+    "loginFailed": "Login failed"
   }
 }

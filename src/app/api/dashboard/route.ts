@@ -32,7 +32,7 @@ export async function GET() {
   if (ungroupedGuests.length > 0) {
     byGroup.push({
       id: "none",
-      name: "Varsayılan",
+      name: "Default",
       nameEn: "Default",
       isDefault: true,
       guestCount: ungroupedGuests.length,

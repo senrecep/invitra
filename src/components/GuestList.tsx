@@ -81,6 +81,13 @@ export default function GuestList() {
   const [editGuest, setEditGuest] = useState<Guest | null>(null);
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
 
+  const viewModes: { key: ViewMode; label: string }[] = [
+    { key: "all", label: t("viewAll") },
+    { key: "byGroup", label: t("viewByGroup") },
+    { key: "byOrganizer", label: t("viewByOrganizer") },
+    { key: "byDate", label: t("viewByDate") },
+  ];
+
   const filtered = useMemo(
     () =>
       guests.filter((g) =>
@@ -98,7 +105,7 @@ export default function GuestList() {
     const map = new Map<string, { label: string; guests: Guest[] }>();
     for (const g of sortedFiltered) {
       const key = g.groupId ?? "__ungrouped__";
-      const label = g.group?.name ?? "Grupsuz";
+      const label = g.group?.name ?? t("ungrouped");
       if (!map.has(key)) map.set(key, { label, guests: [] });
       map.get(key)!.guests.push(g);
     }
@@ -115,7 +122,7 @@ export default function GuestList() {
     const map = new Map<string, { label: string; guests: Guest[] }>();
     for (const g of sortedFiltered) {
       const key = g.organizerId ?? "__unassigned__";
-      const label = g.organizer?.name ?? "Organizatörsüz";
+      const label = g.organizer?.name ?? t("noOrganizerLabel");
       if (!map.has(key)) map.set(key, { label, guests: [] });
       map.get(key)!.guests.push(g);
     }
@@ -148,13 +155,6 @@ export default function GuestList() {
   function isSectionOpen(key: string): boolean {
     return key in openSections ? openSections[key] : true;
   }
-
-  const viewModes: { key: ViewMode; label: string }[] = [
-    { key: "all", label: "Tümü" },
-    { key: "byGroup", label: "Gruba Göre" },
-    { key: "byOrganizer", label: "Organizatöre Göre" },
-    { key: "byDate", label: "Tarihe Göre" },
-  ];
 
   return (
     <div className="space-y-3">

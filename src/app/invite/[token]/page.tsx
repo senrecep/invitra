@@ -27,7 +27,7 @@ export default function InvitePage() {
     fetch(`/api/invite/${token}`)
       .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then((data) => setOrganizer(data.organizer))
-      .catch(() => setError("Geçersiz link"))
+      .catch(() => setError(t("invalidLink")))
       .finally(() => setLoading(false));
   }, [token]);
 
@@ -38,7 +38,7 @@ export default function InvitePage() {
       router.push("/app");
       router.refresh();
     } else {
-      setError("Giriş yapılamadı");
+      setError(t("loginFailed"));
       setJoining(false);
     }
   }

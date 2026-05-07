@@ -49,10 +49,10 @@ function PencilIcon() {
 }
 
 
-const TRANSPORT_META: Record<TransportationType, { icon: React.ReactNode; label: string; color: string }> = {
-  OWN_CAR: { icon: <CarIcon />, label: "Kendi Aracı", color: "text-blue-600 bg-blue-50" },
-  PUBLIC_TRANSPORT: { icon: <BusIcon />, label: "Toplu Ulaşım", color: "text-teal-600 bg-teal-50" },
-  REQUESTING_VEHICLE: { icon: <VanIcon />, label: "Araç Talep", color: "text-orange-600 bg-orange-50" },
+const TRANSPORT_META: Record<TransportationType, { icon: React.ReactNode; labelKey: string; color: string }> = {
+  OWN_CAR: { icon: <CarIcon />, labelKey: "ownCar", color: "text-blue-600 bg-blue-50" },
+  PUBLIC_TRANSPORT: { icon: <BusIcon />, labelKey: "publicTransport", color: "text-teal-600 bg-teal-50" },
+  REQUESTING_VEHICLE: { icon: <VanIcon />, labelKey: "requestingVehicle", color: "text-orange-600 bg-orange-50" },
 };
 
 const GROUP_COLORS = [
@@ -82,6 +82,8 @@ export default function GuestCard({ guest, onEdit }: GuestCardProps) {
   const { session, settings, refreshAll } = useApp();
   const tc = useTranslations("common");
   const t = useTranslations("settings");
+  const tg = useTranslations("guests");
+  const td = useTranslations("dashboard");
 
   const [deleting, setDeleting] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -109,7 +111,7 @@ export default function GuestCard({ guest, onEdit }: GuestCardProps) {
           <span
             className={`shrink-0 text-xs font-medium px-2 py-0.5 rounded-full ${groupColor(guest.groupId)}`}
           >
-            {guest.group?.name ?? "Varsayılan"}
+            {guest.group?.name ?? t("defaultGroup")}
           </span>
         </div>
 
@@ -120,18 +122,18 @@ export default function GuestCard({ guest, onEdit }: GuestCardProps) {
           )}
           <span className={`inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full ${transport.color}`}>
             {transport.icon}
-            {transport.label}
+            {tg(transport.labelKey as any)}
           </span>
         </div>
 
         {/* Count row */}
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1.5">
-            <span className="text-xs text-slate-400">Potansiyel</span>
+            <span className="text-xs text-slate-400">{td("potential")}</span>
             <span className="text-sm font-bold text-amber-600">{guest.potentialCount}</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <span className="text-xs text-slate-400">Kesin</span>
+            <span className="text-xs text-slate-400">{td("confirmed")}</span>
             <span className="text-sm font-bold text-emerald-600">{guest.confirmedCount}</span>
           </div>
 

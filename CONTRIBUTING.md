@@ -1,110 +1,110 @@
-# Katki Rehberi
+# Contributing Guide
 
-Invitra'ya katki sagladiginiz icin tesekkur ederiz! Bu rehber, projeye nasil katki saglayabileceginizi aciklar.
+Thank you for contributing to Invitra! This guide explains how to contribute to the project.
 
-## Davranis Kurallari
+## Code of Conduct
 
-Bu projeye katilarak [Davranis Kurallarimizi](./CODE_OF_CONDUCT.md) kabul etmis olursunuz.
+By participating in this project you agree to our [Code of Conduct](./CODE_OF_CONDUCT.md).
 
-## Nasil Katki Saglayabilirim?
+## How Can I Contribute?
 
-### Hata Bildirme
+### Reporting Bugs
 
-Bir hata bulduysaniz:
+If you find a bug:
 
-1. Oncelikle mevcut issue'lari kontrol edin
-2. Hata daha once bildirilmemisse yeni bir issue acin
-3. Issue basligina `[Bug]` ekleyin
-4. Asagidaki bilgileri ekleyin:
-   - Hatayi yeniden olusturma adimlari
-   - Beklenen davranis
-   - Gerceklesen davranis
-   - Ortam bilgileri (OS, Node versiyonu, tarayici)
-   - Hata mesaji / stack trace (tam metin)
+1. First check existing issues
+2. If the bug hasn't been reported, open a new issue
+3. Add `[Bug]` to the issue title
+4. Include the following information:
+   - Steps to reproduce the bug
+   - Expected behavior
+   - Actual behavior
+   - Environment info (OS, Node version, browser)
+   - Error message / stack trace (full text)
 
-### Ozellik Onermek
+### Suggesting Features
 
-1. Mevcut issue'lari kontrol edin
-2. Yeni bir issue acin, basliga `[Feature]` ekleyin
-3. Onerinizi aciklayip neden gerekli oldugunu belirtin
+1. Check existing issues
+2. Open a new issue and add `[Feature]` to the title
+3. Describe your proposal and explain why it's needed
 
-### Kod Katki
+### Code Contributions
 
-1. Repo'yu fork edin
-2. Feature branch olusturun: `git checkout -b feat/ozellik-adi`
-3. Degisikliklerinizi yapip commit edin
-4. Pull request acin
+1. Fork the repo
+2. Create a feature branch: `git checkout -b feat/feature-name`
+3. Make your changes and commit them
+4. Open a pull request
 
-## Gelistirme Ortami
+## Development Setup
 
-### Gereksinimler
+### Requirements
 
 - Node.js >= 20
 - npm >= 10
 - Docker + Docker Compose
 - Git
 
-### Kurulum
+### Setup
 
 ```bash
-# Fork'u klonla
-git clone https://github.com/KULLANICI_ADINIZ/invitra.git
+# Clone your fork
+git clone https://github.com/YOUR_USERNAME/invitra.git
 cd invitra
 
-# Bagimliliklari yukle
+# Install dependencies
 npm install
 
-# Ortam degiskenlerini ayarla
+# Set environment variables
 cp .env.example .env
-# .env dosyasini duzenle (DATABASE_URL, ADMIN_PASSWORD_HASH)
+# Edit .env file (DATABASE_URL, ADMIN_PASSWORD_HASH)
 
-# Veritabanini baslat
+# Start the database
 docker compose up -d postgres
 
-# Migration calistir
+# Run migrations
 npx prisma migrate dev
 
-# Gelistirme modunu baslat
+# Start development mode
 npm run dev
 ```
 
-### Veritabani Semalari
+### Database Schemas
 
 ```bash
-# Schema degistirdikten sonra migration olustur
-npx prisma migrate dev --name aciklama
+# Create a migration after changing the schema
+npx prisma migrate dev --name description
 
-# Prisma Client'i yenile
+# Regenerate Prisma Client
 npx prisma generate
 ```
 
-## Kod Standartlari
+## Code Standards
 
 ### TypeScript
 
-- `any` type kullanma
-- `@ts-ignore` / `@ts-nocheck` kullanma
-- API input'larini validate et
+- Do not use `any` type
+- Do not use `@ts-ignore` / `@ts-nocheck`
+- Validate API inputs
 
-### Commit Mesaji Formati
+### Commit Message Format
 
-[Conventional Commits](https://www.conventionalcommits.org/) standardini kullanin:
+Use the [Conventional Commits](https://www.conventionalcommits.org/) standard:
 
 ```
-<tip>(<kapsam>): <aciklama>
+<type>(<scope>): <description>
 ```
 
-| Tip | Aciklama |
-|-----|----------|
-| `feat` | Yeni ozellik |
-| `fix` | Hata duzeltme |
-| `docs` | Sadece dokumantasyon |
-| `style` | Format degisikligi (islev degisikliginde degil) |
-| `refactor` | Yeniden yapilandirma |
-| `chore` | Build, tooling, bagimlilik guncelleme |
-| `perf` | Performans iyilestirme |
+| Type | Description |
+|------|-------------|
+| `feat` | New feature |
+| `fix` | Bug fix |
+| `docs` | Documentation only |
+| `style` | Formatting change (no functional change) |
+| `refactor` | Code restructuring |
+| `chore` | Build, tooling, dependency updates |
+| `perf` | Performance improvement |
 
-**Ornekler:**
+**Examples:**
 
 ```
 feat(guests): add transportation type filter
@@ -113,16 +113,16 @@ docs(readme): update local setup instructions
 chore(deps): upgrade next to 15.3
 ```
 
-### Kapsam Ornekleri
+### Scope Examples
 
 `guests`, `settings`, `dashboard`, `auth`, `invite`, `groups`, `organizers`, `pwa`, `ui`
 
-## Pull Request Sureci
+## Pull Request Process
 
-1. PR basliginda Conventional Commits formatini kullan
-2. PR aciklamasinda yapilan degisiklikleri ve test adimlari yaz
-3. Ilgili issue'lara baglantin ekle (`Closes #123`)
+1. Use Conventional Commits format in the PR title
+2. Describe the changes made and testing steps in the PR description
+3. Link to related issues (`Closes #123`)
 
-## Guvenlik Aciklari
+## Security Disclosures
 
-Guvenlik acigi bulduysan lutfen public issue acma. Dogrudan proje sahibiyle iletisime gec.
+If you find a security vulnerability, please do not open a public issue. Contact the project owner directly.

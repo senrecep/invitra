@@ -37,7 +37,7 @@ export default function LoginPage() {
         <div className="text-center mb-8">
           <img src="/icon.png" alt="Invitra" className="w-16 h-16 rounded-2xl mb-4 shadow-lg shadow-slate-200" />
           <h1 className="text-2xl font-bold text-slate-900">Invitra</h1>
-          <p className="text-stone-400 mt-1 text-sm">Davet Yönetim Sistemi</p>
+          <p className="text-stone-400 mt-1 text-sm">{t("subtitle")}</p>
         </div>
 
         <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">

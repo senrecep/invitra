@@ -24,6 +24,7 @@ function ChevronDownIcon() {
 export default function Dashboard() {
   const { settings, guests, groups, organizers, isLoading } = useApp();
   const t = useTranslations("dashboard");
+  const tg = useTranslations("guests");
   const [open, setOpen] = useState(true);
 
   const stats = useMemo(() => {
@@ -61,9 +62,9 @@ export default function Dashboard() {
       .filter((o) => o.guestCount > 0);
 
     const transportationMap: Record<string, { label: string; count: number; potentialCount: number }> = {
-      OWN_CAR:            { label: "Kendi Aracı",  count: 0, potentialCount: 0 },
-      PUBLIC_TRANSPORT:   { label: "Toplu Ulaşım", count: 0, potentialCount: 0 },
-      REQUESTING_VEHICLE: { label: "Araç Talep",   count: 0, potentialCount: 0 },
+      OWN_CAR:            { label: tg("ownCar"),            count: 0, potentialCount: 0 },
+      PUBLIC_TRANSPORT:   { label: tg("publicTransport"),   count: 0, potentialCount: 0 },
+      REQUESTING_VEHICLE: { label: tg("requestingVehicle"), count: 0, potentialCount: 0 },
     };
     for (const g of guests) {
       const key = g.transportation ?? "OWN_CAR";
@@ -214,7 +215,7 @@ export default function Dashboard() {
                         <div key={key} className={`${c.bg} rounded-xl p-3 text-center`}>
                           <p className={`text-xl font-bold ${c.text}`}>{count}</p>
                           <p className={`text-xs mt-0.5 leading-tight font-medium ${c.sub}`}>{label}</p>
-                          <p className={`text-xs mt-1 ${c.sub} opacity-70`}>{potentialCount} kişi</p>
+                          <p className={`text-xs mt-1 ${c.sub} opacity-70`}>{potentialCount} {t("guests")}</p>
                         </div>
                       );
                     })}
