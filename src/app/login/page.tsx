@@ -35,7 +35,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-stone-50 via-rose-50/30 to-stone-100 px-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <img src="/icon.png" alt="Invitra" className="w-16 h-16 rounded-2xl mb-4 shadow-lg shadow-slate-200" />
+          <img src="/icon.png" alt="Invitra" className="w-16 h-16 rounded-2xl mb-4 shadow-lg shadow-slate-200 mx-auto" />
           <h1 className="text-2xl font-bold text-slate-900">Invitra</h1>
           <p className="text-stone-400 mt-1 text-sm">{t("subtitle")}</p>
         </div>
