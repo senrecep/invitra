@@ -7,7 +7,7 @@ import { getLocale, getMessages } from "next-intl/server";
 const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.DOMAIN ?? "http://localhost:3000"),
+  metadataBase: new URL(process.env.DOMAIN ? (process.env.DOMAIN.startsWith("http") ? process.env.DOMAIN : `https://${process.env.DOMAIN}`) : "http://localhost:3000"),
   title: "Invitra",
   description: "Event Guest Management System",
   manifest: "/manifest.json",
