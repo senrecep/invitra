@@ -1,0 +1,81 @@
+# =============================================================================
+# Invitra — Dokploy / Production
+# =============================================================================
+#
+# Deployment:
+#   1. Create a new Docker Compose service in Dokploy
+#   2. Set compose file path: docker-compose.dokploy.yml
+#   3. Add environment variables in Dokploy UI > Environment tab
+#   4. Set domain in Dokploy UI > Domains tab → container port: 3000
+#      (Traefik handles SSL automatically via Let's Encrypt)
+#
+# Required env vars in Dokploy:
+#   DATABASE_URL          postgresql://invitra:${POSTGRES_PASSWORD}@invitra-db:5432/invitra
+#   POSTGRES_PASSWORD     strong random password
+#   JWT_SECRET            strong random string
+#   MASTER_PASSWORD_HASH  bcrypt hash with $$ escaping
+#   DOMAIN                your domain (e.g. invitra.example.com)
+# =============================================================================
+
+services:
+  app:
+    build: .
+    container_name: invitra-app
+    restart: unless-stopped
+    env_file:
+      - .env
+      - path: secrets.env
+        required: false
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - dokploy-network
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 512M
+
+  db:
+    image: postgres:16-alpine
+    container_name: invitra-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: invitra
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: invitra
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - dokploy-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U invitra -d invitra"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+volumes:
+  postgres_data:
+
+networks:
+  dokploy-network:
+    external: true

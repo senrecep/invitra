@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model EventSettings {
+  id               Int     @id @default(1)
+  capacity         Int     @default(150)
+  editingEnabled   Boolean @default(true)
+  eventName        String?
+  eventDescription String?
+  eventDate        String?
+  eventTime        String?
+  locale           String  @default("tr-TR")
+  timezone         String  @default("Europe/Istanbul")
+}
+
+model Group {
+  id        String   @id @default(cuid())
+  name      String
+  nameEn    String?
+  isDefault Boolean  @default(false)
+  order     Int      @default(0)
+  guests    Guest[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Organizer {
+  id        String     @id @default(cuid())
+  name      String
+  token     String     @unique @default(cuid())
+  isDefault Boolean    @default(false)
+  guests    Guest[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+enum Transportation {
+  OWN_CAR
+  PUBLIC_TRANSPORT
+  REQUESTING_VEHICLE
+}
+
+model Guest {
+  id              String         @id @default(cuid())
+  fullName        String
+  potentialCount  Int            @default(1)
+  confirmedCount  Int            @default(0)
+  transportation  Transportation @default(OWN_CAR)
+  groupId         String?
+  organizerId     String?
+  group           Group?         @relation(fields: [groupId], references: [id], onDelete: SetNull)
+  organizer       Organizer?     @relation(fields: [organizerId], references: [id], onDelete: SetNull)
+  createdBy       String         // organizerId or "admin"
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  action     String   // CREATE | UPDATE | DELETE
+  entityType String   // GUEST | GROUP | ORGANIZER | SETTINGS
+  entityId   String
+  actorId    String   // organizerId or "admin" (plain string, no FK constraint)
+  actorName  String
+  diff       Json?
+  createdAt  DateTime @default(now())
+}

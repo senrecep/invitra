@@ -1,0 +1,47 @@
+# =============================================================================
+# Invitra — Local Development
+# =============================================================================
+# Usage:
+#   docker compose up -d --build
+#
+# Requirements:
+#   - .env          (non-secret vars)
+#   - secrets.env   (MASTER_PASSWORD_HASH with $$ escaping)
+# =============================================================================
+
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+      - path: secrets.env
+        required: false
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: invitra
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: invitra
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U invitra -d invitra"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
