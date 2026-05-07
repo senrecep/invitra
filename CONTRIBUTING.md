@@ -1,94 +1,66 @@
-# Contributing Guide
+# Contributing to Invitra
 
-Thank you for contributing to Invitra! This guide explains how to contribute to the project.
+By participating in this project you agree to the [Code of Conduct](./CODE_OF_CONDUCT.md).
 
-## Code of Conduct
+## How to contribute
 
-By participating in this project you agree to our [Code of Conduct](./CODE_OF_CONDUCT.md).
-
-## How Can I Contribute?
-
-### Reporting Bugs
+### Reporting bugs
 
 If you find a bug:
 
-1. First check existing issues
-2. If the bug hasn't been reported, open a new issue
-3. Add `[Bug]` to the issue title
-4. Include the following information:
-   - Steps to reproduce the bug
-   - Expected behavior
-   - Actual behavior
-   - Environment info (OS, Node version, browser)
-   - Error message / stack trace (full text)
+1. Check existing issues first
+2. Open a new issue with `[Bug]` in the title
+3. Include:
+   - Steps to reproduce
+   - Expected vs actual behavior
+   - OS, Node version, browser
+   - Full error message / stack trace
 
-### Suggesting Features
+### Suggesting features
 
-1. Check existing issues
-2. Open a new issue and add `[Feature]` to the title
-3. Describe your proposal and explain why it's needed
+Open a new issue with `[Feature]` in the title. Describe what you want and why.
 
-### Code Contributions
+### Code contributions
 
 1. Fork the repo
 2. Create a feature branch: `git checkout -b feat/feature-name`
-3. Make your changes and commit them
+3. Commit your changes
 4. Open a pull request
 
-## Development Setup
-
-### Requirements
-
-- Node.js >= 20
-- npm >= 10
-- Docker + Docker Compose
-- Git
-
-### Setup
+## Development setup
 
 ```bash
-# Clone your fork
 git clone https://github.com/senrecep/invitra.git
 cd invitra
-
-# Install dependencies
 npm install
 
 # Set environment variables
 cp .env.example .env
-# Edit .env file (DATABASE_URL, ADMIN_PASSWORD_HASH)
+# Edit .env (DATABASE_URL, ADMIN_PASSWORD_HASH)
 
-# Start the database
 docker compose up -d postgres
-
-# Run migrations
 npx prisma migrate dev
-
-# Start development mode
 npm run dev
 ```
 
-### Database Schemas
+After a schema change:
 
 ```bash
-# Create a migration after changing the schema
 npx prisma migrate dev --name description
-
-# Regenerate Prisma Client
 npx prisma generate
 ```
 
-## Code Standards
+**Requirements:** Node.js >= 20, npm >= 10, Docker + Docker Compose, Git
 
-### TypeScript
+## Code standards
 
-- Do not use `any` type
-- Do not use `@ts-ignore` / `@ts-nocheck`
+- No `any` types
+- No `@ts-ignore` / `@ts-nocheck`
 - Validate API inputs
 
-### Commit Message Format
+## Commit format
 
-Use the [Conventional Commits](https://www.conventionalcommits.org/) standard:
+[Conventional Commits](https://www.conventionalcommits.org/):
 
 ```
 <type>(<scope>): <description>
@@ -99,30 +71,25 @@ Use the [Conventional Commits](https://www.conventionalcommits.org/) standard:
 | `feat` | New feature |
 | `fix` | Bug fix |
 | `docs` | Documentation only |
-| `style` | Formatting change (no functional change) |
+| `style` | Formatting change (no logic change) |
 | `refactor` | Code restructuring |
 | `chore` | Build, tooling, dependency updates |
 | `perf` | Performance improvement |
-
-**Examples:**
 
 ```
 feat(guests): add transportation type filter
 fix(settings): sync form inputs after async settings load
 docs(readme): update local setup instructions
-chore(deps): upgrade next to 15.3
 ```
 
-### Scope Examples
+Scopes: `guests`, `settings`, `dashboard`, `auth`, `invite`, `groups`, `organizers`, `pwa`, `ui`
 
-`guests`, `settings`, `dashboard`, `auth`, `invite`, `groups`, `organizers`, `pwa`, `ui`
+## Pull requests
 
-## Pull Request Process
+1. PR title follows Conventional Commits format
+2. Describe what changed and how to test it
+3. Link related issues (`Closes #123`)
 
-1. Use Conventional Commits format in the PR title
-2. Describe the changes made and testing steps in the PR description
-3. Link to related issues (`Closes #123`)
+## Security
 
-## Security Disclosures
-
-If you find a security vulnerability, please do not open a public issue. Contact the project owner directly.
+If you find a security vulnerability, do not open a public issue. Contact the project owner directly.

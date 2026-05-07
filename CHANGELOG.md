@@ -26,38 +26,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-#### Core System
+#### Core system
 - Next.js 15 App Router with custom Socket.io server for real-time sync
 - PostgreSQL + Prisma 6 ORM with full schema (Guests, Groups, Organizers, EventSettings)
 - Role-based access: admin (full control) and organizer (own guests only)
 - Session-based authentication with bcrypt password hashing and httpOnly cookies
-- Real-time broadcast — all mutations instantly push to every connected client via Socket.io
+- Real-time broadcast: all mutations instantly push to every connected client via Socket.io
 
-#### Guest Management
+#### Guest management
 - Add, edit, delete guests with full name, potential/confirmed counts, group, organizer, transportation
 - Transportation types: OWN_CAR, PUBLIC_TRANSPORT, REQUESTING_VEHICLE
 - Confirmed count capped at potential count (validation both UI and API)
 - 4 view modes: All, By Group, By Organizer, By Date
 
-#### Dashboard & Statistics
+#### Dashboard & statistics
 - Summary panel: total guests, total potential, total confirmed
 - Capacity usage bar with color indicator (green/amber/red)
 - Breakdown by group, by organizer, by transportation type
 - Event info banner (name, description, date, time)
 
-#### Settings Panel
+#### Settings panel
 - Event info configuration: name, description, date, time, locale, timezone
 - Capacity limit configuration
-- Editing toggle — disable/enable all mutations system-wide, synced live to all clients
+- Editing toggle: disable/enable all mutations system-wide, synced live to all clients
 - Group management: add, edit, delete, copy invite link
 - Organizer management: add, edit, delete, copy invite link
 
 #### Internationalization
 - Turkish UI via next-intl
-- Locale and timezone stored in DB (not env vars) — configurable per event
+- Locale and timezone stored in DB (not env vars), configurable per event
 - `Intl.DateTimeFormat` / `Intl.RelativeTimeFormat` for locale-aware date display
 
-#### Security & Privacy
+#### Security & privacy
 - Full crawler blocking: `X-Robots-Tag` headers + `robots.txt` blocking all bots
 - No search engine or AI crawler indexing
 

@@ -8,20 +8,20 @@ A real-time, multi-user guest management system for weddings and events. Built m
 
 ## Features
 
-- **Real-time sync** — Socket.io broadcasts all changes instantly to every connected client
+- **Real-time sync**: Socket.io broadcasts all changes instantly to every connected client
 - **Role-based access**
-  - **Admin** — full access: manage settings, groups, organizers, all guests
-  - **Organizer** — accesses via unique invite link, can only manage their own guests
-- **Guest management** — name, potential/confirmed headcount, transportation type, group, organizer
-- **Transportation tracking** — Own Car / Public Transport / Requesting Vehicle
-- **Dashboard** — live stats: total guests, potential & confirmed headcount, capacity bar, breakdown by group, organizer, and transportation type
-- **Multiple list views** — All, By Group, By Organizer, By Date (all collapsible sections)
-- **Event info** — name, description, date, time displayed in the dashboard header
-- **Editing toggle** — admin can lock/unlock editing for organizers globally; amber banner shown to all clients in real time
-- **Audit log** — every create/update/delete action is recorded with actor and diff
-- **i18n** — Turkish (default) and English, cookie-based locale switching
-- **Mobile-first UI** — Tailwind CSS v4, violet/orange brand palette, touch-friendly (44px targets)
-- **No indexing** — `robots.txt` + `X-Robots-Tag` headers block all search engines and AI crawlers
+  - **Admin**: full access — manage settings, groups, organizers, all guests
+  - **Organizer**: accesses via unique invite link, can only manage their own guests
+- **Guest management**: name, potential/confirmed headcount, transportation type, group, organizer
+- **Transportation tracking**: Own Car / Public Transport / Requesting Vehicle
+- **Dashboard**: live stats — total guests, potential & confirmed headcount, capacity bar, breakdown by group, organizer, and transportation type
+- **Multiple list views**: All, By Group, By Organizer, By Date (all collapsible sections)
+- **Event info**: name, description, date, time displayed in the dashboard header
+- **Editing toggle**: admin can lock/unlock editing for organizers globally; amber banner shown to all clients in real time
+- **Audit log**: every create/update/delete action is recorded with actor and diff
+- **i18n**: Turkish (default) and English, cookie-based locale switching
+- **Mobile-first UI**: Tailwind CSS v4, slate-800/rose brand palette, touch-friendly (44px targets)
+- **No indexing**: `robots.txt` + `X-Robots-Tag` headers block all search engines and AI crawlers
 
 ---
 
